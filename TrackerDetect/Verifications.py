@@ -18,7 +18,7 @@ def verify_status_code(code, expected_code, content):
         file_log.write("    Test **KO**: code response is: "+ str(code) + ", request failed, because server error. See details:"+ str(content))
         file_log.write(" \n")
     elif code/100 == 4:
-        print("Test **KO**: code response is: "+ str(code) + ", request failed, because server error. See details:"+ str(content))
+        print("Test **KO**: code response is: "+ str(code) + ", request failed, because not expected response. See details:"+ str(content))
         file_log.write("    Test **KO**: code response is: "+ str(code) + ", request failed. See details: "+ str(content))
         file_log.write(" \n")
     elif code/100 == 2:
