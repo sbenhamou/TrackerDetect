@@ -1,0 +1,73 @@
+Tests of the CRUD operation of a rest API 
+Date and time of the log file generation : 27/07/22 12:00     by Shoshana Benhamou
+ 
+
+Test Set: GET METHOD
+-----------------------
+Test case 1: verify the get method status code
+    Test OK: code response is: 200, request successed
+
+Test Set: PUT METHOD
+-----------------------
+Test case 2: verify the put method status code when passing valid values
+    Test OK: code response is: 200, request successed
+Test case 3: verify the content of the valid put method
+    Test OK: content is exact. See details: b'{"main_key": "main_key03", "value": "value03"}' 
+Test case 4: verify the put method status code when passing sames values
+    Test OK: code response is: 400, request successed
+Test case 5: verify the put method content when passing sames values
+    Test OK: content is exact. See details: b'value already exist' 
+Test case 6: verify the put method status code when passing blank 'value'
+    Test OK: code response is: 200, request successed
+Test case 7: verify the content of the put method when passing blank 'value'
+    Test OK: content is exact. See details: b'{"main_key": "main_key05Bis", "value": ""}' 
+Test case 8: verify the put method status code when passing blank 'main_key'
+    Test **KO**: code response is: 400, request failed. See details: b"'list' object has no attribute 'get'" 
+Test case 9: verify the content of the put method when passing blank 'main_key'
+    Test **KO**: content isn't exact. See details: b"'list' object has no attribute 'get'" 
+Test case 10: verify the put method status code whithout passing the 'main_key'
+    Test OK: code response is: 400, request successed
+Test case 11: verify the content of the put method whithout passing the 'main_key'
+    Test OK: content is exact. See details: b"'main_key'" 
+Test case 12: verify the put method status code whithout passing the 'value'
+    Test OK: code response is: 400, request successed
+Test case 13: verify the content of the put method whithout passing the 'value'
+    Test OK: content is exact. See details: b"'value'" 
+Test case 14: verify the put method status code when put exactly 10 values in the store
+    Test **KO**: code response is: 200, request failed because not expected response. See details: b'{"main_key": "main_key09", "value": "value09"}' 
+    It's possible to set 11 items in the store
+Test case 15: verify the content of the put method when reached quota
+    Test **KO**: content isn't exact. See details: b'{"main_key": "main_key09Bis", "value": "value09Bis"}' 
+    The content of the response when put 11 items in the store is not correct
+Test case 16: verify the put method status code when reached quota
+    Test OK: code response is: 400, request successed
+    It's not possible to set 12 items in the store
+Test case 17: verify the content of the put method when reached quota
+    Test OK: content is exact. See details: b'you reached your quta' 
+    The content of the response when reached quota is correct
+
+Test Set: DELETE METHOD
+-----------------------
+Test case 18: verify the delete method status code when passing an existing main_key parameter
+    Test OK: code response is: 200, request successed
+Test case 19: verify the delete method content when passing an existing main_key parameter
+    Test OK: content is exact. See details: b'{"main_key": "main_key10Bis", "value": "value10Bis"}' 
+
+Test Set: POST METHOD
+-----------------------
+Test case 20: the post method status code when passing existing main_key
+    Test OK: code response is: 200, request successed
+Test case 21: the post method content when passing existing main_key
+    Test OK: content is exact. See details: b'{"main_key": "main_key12", "value": "post_value12"}' 
+Test case 22: verify the post method status code if the main_key is not in the store
+    Test OK: code response is: 400, request successed
+Test case 23: verify the post method content if the main_key is not in the store
+    Test OK: content is exact. See details: b'value dose not exist' 
+Test case 24: verify the post method status code whithout passing the 'main_key'
+    Test OK: code response is: 400, request successed
+Test case 25: verify the content of the post method whithout passing the 'main_key'
+    Test OK: content is exact. See details: b"'main_key'" 
+Test case 26: verify the post method status code whithout passing the 'value'
+    Test OK: code response is: 400, request successed
+Test case 27: verify the content of the post method whithout passing the 'value'
+    Test OK: content is exact. See details: b"'value'" 
