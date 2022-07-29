@@ -85,10 +85,8 @@ def post_method_without_parameter(parameter1, vparameter1):
 '''Business Flow: post method missing one parameter: get status_code, reason and content'''
 def post_method_getInfos_without_parameter(parameter1, vparameter1):
     payload={}
-    print(payload)
     with requests.Session() as client:
         payload[parameter1] = vparameter1
-        print(payload)
         headers = {'content-type': 'application/json'}
         response = client.post(url, data=json.dumps(payload), headers=headers, allow_redirects=False,verify = False)
         return {'status': response.status_code, 'reason': response.reason, 'content': response.content}        
